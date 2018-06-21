@@ -26,9 +26,6 @@ To test this example (nkstool) just dot he following:
 
 * run script either `'run.bat'` or `'run.sh'`
 
-You can test the example of protection with `'nkstool'` pretty simple - just edit [config.txt](./nkstool/config.txt),
-place an APK with your signature and then start `'run.bat'` or `'run.sh'`
-
 Finally you can see results of the checks:
 
 ## Before the attack  - all signatures are equal
