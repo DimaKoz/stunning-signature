@@ -1,0 +1,15 @@
+# Obtain a signature information from an original apk
+apk.signed=src-app-debug.apk
+
+# APK to be processed (in our case it will the same apk - src-app-debug.apk)
+apk.src=src-app-debug.apk
+
+# APK with the result of the attack
+apk.out=out.apk
+
+# Signature configuration
+sign.enable=true
+sign.file=test.keystore
+sign.password=123456
+sign.alias=user
+sign.aliasPassword=654321
