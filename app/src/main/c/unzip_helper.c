@@ -25,6 +25,22 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
 #include "unzip_helper.h"
 
 
+//return 1 if str starts with prefix
+int string_starts_with(const char *str, const char *prefix){
+    size_t str_len = strlen(str);
+    size_t prefix_len = strlen(prefix);
+    return str_len < prefix_len ? 0 : strncasecmp(prefix, str, prefix_len) == 0;
+}
+
+
+//return 1 if str ands with suffix
+int string_ends_with(const char *str, const char *suffix){
+    size_t str_len = strlen(str);
+    size_t suffix_len = strlen(suffix);
+    return str_len < suffix_len ? 0 : strcasecmp(str + (str_len-suffix_len), suffix) == 0;
+}
+
+
 //return MZ_ERROR
 static int32_t unzipHelperGetCertFileInfo(void *handle, mz_zip_file **file_info) {
 
@@ -46,8 +62,13 @@ static int32_t unzipHelperGetCertFileInfo(void *handle, mz_zip_file **file_info)
             break;
         }
 
-        if (NULL != (*file_info)->filename && strcasecmp((*file_info)->filename,"META-INF/CERT.RSA" /*"res/raw/test.txt"*/) == 0) {
-            return MZ_OK;
+        //Return MZ_OK if is a certificate file
+        if (NULL != (*file_info)->filename && string_starts_with((*file_info)->filename, "META-INF/")) {
+            if(string_ends_with((*file_info)->filename, ".RSA")
+               || string_ends_with((*file_info)->filename, ".DSA")
+               || string_ends_with((*file_info)->filename, ".EC")){
+                return MZ_OK;
+            }
         }
 
         err = mz_zip_goto_next_entry(handle);
