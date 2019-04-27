@@ -11,7 +11,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
-                cppFlags ""
+                cFlags "-fvisibility=hidden"
+                cppFlags "-fvisibility=hidden"
+
             }
         }
     }

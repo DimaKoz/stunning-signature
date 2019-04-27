@@ -350,7 +350,6 @@ static element *pkcs7HelperGetElement(const char *name, element *begin) {
         begin = head;
     element *p = begin;
     while (p != NULL) {
-        usleep(1000);
         if (strncmp(p->name, name, strlen(name)) == 0) {
             return p;
         }
@@ -402,15 +401,12 @@ static bool pkcs7HelperParse(unsigned char *certrsa, size_t length) {
 
 static void pkcs7HelperPrint() {
     NSV_LOGI("-----------------------------------------------------------------------\n");
-    usleep(500);
     NSV_LOGI(" name                                          offset        length\n");
-    usleep(500);
     NSV_LOGI(" ======================================== =============== =============\n");
     element *p = head;
     const size_t PRINT_BUF_SIZE = 256;
     char buf[PRINT_BUF_SIZE] = "";
     while (p != NULL) {
-        usleep(500);
         for (int i = 0; i < p->level; i++) {
             sprintf(buf, "%s    ", buf);
         }

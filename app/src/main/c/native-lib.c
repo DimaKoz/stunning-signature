@@ -50,7 +50,6 @@ Java_com_kozhevin_signverification_MainActivity_bytesFromJNI(JNIEnv *env, jobjec
         return NULL;
     }
     NSV_LOGI("pkcs7HelperGetSignature starts\n");
-    usleep(500);
 
     unsigned char *res = pkcs7HelperGetSignature(content, len_in, &len_out);
     NSV_LOGI("pkcs7HelperGetSignature finishes\n");

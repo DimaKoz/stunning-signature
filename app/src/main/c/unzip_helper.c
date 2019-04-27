@@ -94,9 +94,7 @@ static void unzipHelperPrintFileInfo(const mz_zip_file *file_info) {
     const char *string_method = NULL;
     char crypt = ' ';
 
-    usleep(500);
     NSV_LOGI("  Length  Method      Size  Attribs Ratio   Date    Time   CRC-32     Name\n");
-    usleep(500);
     NSV_LOGI("  ------  -------     ----  ------- -----   ----    ----   ------     ----\n");
     ratio = 0;
     if (file_info->uncompressed_size > 0)
@@ -125,7 +123,6 @@ static void unzipHelperPrintFileInfo(const mz_zip_file *file_info) {
     }
 
     mz_zip_time_t_to_tm(file_info->modified_date, &tmu_date);
-    usleep(500);
     NSV_LOGI(" %7"PRIu64"  %6s%c %7"PRIu64" %8"PRIx32" %3"PRIu32"%%  %2.2"PRIu32"-%2.2"PRIu32\
                "-%2.2"PRIu32"  %2.2"PRIu32":%2.2"PRIu32"  %8.8"PRIx32"   %s\n",
              file_info->uncompressed_size, string_method, crypt,
