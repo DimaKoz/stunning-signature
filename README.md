@@ -50,6 +50,11 @@ Finally you can see results of the checks:
 * We pass a signature through JNI from native layer to Java (just for convenience)
 
 
+
+# [Here](https://stackoverflow.com/a/50976883/3166697) is an example how we can get MD5 from a signature(using [mbed TLS](https://tls.mbed.org/))
+
+Also I suggest you do not forget about '-fvisibility=hidden' flag.
+
 #### Used libraries and projects:
 
  * [Minizip](https://github.com/nmoinvaz/minizip) This program is distributed under the terms of the same license as zlib.
